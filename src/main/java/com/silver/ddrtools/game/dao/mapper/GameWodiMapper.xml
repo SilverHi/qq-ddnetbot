@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.silver.ddrtools.game.dao.GameWodiMapper">
+  <resultMap id="BaseResultMap" type="com.silver.ddrtools.game.entity.GameWodi">
+    <!--@mbg.generated-->
+    <!--@Table game_wodi-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="wodi_work" jdbcType="VARCHAR" property="wodiWork" />
+    <result column="pingmin_word" jdbcType="VARCHAR" property="pingminWord" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, wodi_work, pingmin_word
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from game_wodi
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from game_wodi
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.silver.ddrtools.game.entity.GameWodi" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into game_wodi (wodi_work, pingmin_word)
+    values (#{wodiWork,jdbcType=VARCHAR}, #{pingminWord,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.silver.ddrtools.game.entity.GameWodi" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into game_wodi
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wodiWork != null">
+        wodi_work,
+      </if>
+      <if test="pingminWord != null">
+        pingmin_word,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wodiWork != null">
+        #{wodiWork,jdbcType=VARCHAR},
+      </if>
+      <if test="pingminWord != null">
+        #{pingminWord,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.silver.ddrtools.game.entity.GameWodi">
+    <!--@mbg.generated-->
+    update game_wodi
+    <set>
+      <if test="wodiWork != null">
+        wodi_work = #{wodiWork,jdbcType=VARCHAR},
+      </if>
+      <if test="pingminWord != null">
+        pingmin_word = #{pingminWord,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.silver.ddrtools.game.entity.GameWodi">
+    <!--@mbg.generated-->
+    update game_wodi
+    set wodi_work = #{wodiWork,jdbcType=VARCHAR},
+      pingmin_word = #{pingminWord,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

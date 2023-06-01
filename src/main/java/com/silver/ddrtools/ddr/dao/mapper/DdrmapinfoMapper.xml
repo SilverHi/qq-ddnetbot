@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.silver.ddrtools.ddr.dao.DdrmapinfoMapper">
+  <resultMap id="BaseResultMap" type="com.silver.ddrtools.ddr.entity.DdrMapinfo">
+    <!--@mbg.generated-->
+    <!--@Table ddrmapinfo-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="mapname" jdbcType="VARCHAR" property="mapname" />
+    <result column="website" jdbcType="VARCHAR" property="website" />
+    <result column="thumbnail" jdbcType="VARCHAR" property="thumbnail" />
+    <result column="webpreview" jdbcType="VARCHAR" property="webpreview" />
+    <result column="maptype" jdbcType="VARCHAR" property="maptype" />
+    <result column="points" jdbcType="INTEGER" property="points" />
+    <result column="difficulty" jdbcType="INTEGER" property="difficulty" />
+    <result column="mapper" jdbcType="VARCHAR" property="mapper" />
+    <result column="maprelease" jdbcType="VARCHAR" property="maprelease" />
+    <result column="width" jdbcType="INTEGER" property="width" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+    <result column="goodnum" jdbcType="INTEGER" property="goodnum" />
+    <result column="badnum" jdbcType="INTEGER" property="badnum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, mapname, website, thumbnail, webpreview, maptype, points, difficulty, mapper, 
+    maprelease, width, height, goodnum, badnum
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from ddrmapinfo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from ddrmapinfo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.silver.ddrtools.ddr.entity.DdrMapinfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into ddr_mapinfo (mapname, website, thumbnail,
+      webpreview, maptype, points, 
+      difficulty, mapper, maprelease, 
+      width, height, goodnum, 
+      badnum)
+    values (#{mapname,jdbcType=VARCHAR}, #{website,jdbcType=VARCHAR}, #{thumbnail,jdbcType=VARCHAR}, 
+      #{webpreview,jdbcType=VARCHAR}, #{maptype,jdbcType=VARCHAR}, #{points,jdbcType=INTEGER}, 
+      #{difficulty,jdbcType=INTEGER}, #{mapper,jdbcType=VARCHAR}, #{maprelease,jdbcType=VARCHAR}, 
+      #{width,jdbcType=INTEGER}, #{height,jdbcType=INTEGER}, #{goodnum,jdbcType=INTEGER}, 
+      #{badnum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.silver.ddrtools.ddr.entity.DdrMapinfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into ddrmapinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mapname != null">
+        mapname,
+      </if>
+      <if test="website != null">
+        website,
+      </if>
+      <if test="thumbnail != null">
+        thumbnail,
+      </if>
+      <if test="webpreview != null">
+        webpreview,
+      </if>
+      <if test="maptype != null">
+        maptype,
+      </if>
+      <if test="points != null">
+        points,
+      </if>
+      <if test="difficulty != null">
+        difficulty,
+      </if>
+      <if test="mapper != null">
+        mapper,
+      </if>
+      <if test="maprelease != null">
+        maprelease,
+      </if>
+      <if test="width != null">
+        width,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="goodnum != null">
+        goodnum,
+      </if>
+      <if test="badnum != null">
+        badnum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mapname != null">
+        #{mapname,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnail != null">
+        #{thumbnail,jdbcType=VARCHAR},
+      </if>
+      <if test="webpreview != null">
+        #{webpreview,jdbcType=VARCHAR},
+      </if>
+      <if test="maptype != null">
+        #{maptype,jdbcType=VARCHAR},
+      </if>
+      <if test="points != null">
+        #{points,jdbcType=INTEGER},
+      </if>
+      <if test="difficulty != null">
+        #{difficulty,jdbcType=INTEGER},
+      </if>
+      <if test="mapper != null">
+        #{mapper,jdbcType=VARCHAR},
+      </if>
+      <if test="maprelease != null">
+        #{maprelease,jdbcType=VARCHAR},
+      </if>
+      <if test="width != null">
+        #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="goodnum != null">
+        #{goodnum,jdbcType=INTEGER},
+      </if>
+      <if test="badnum != null">
+        #{badnum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.silver.ddrtools.ddr.entity.DdrMapinfo">
+    <!--@mbg.generated-->
+    update ddrmapinfo
+    <set>
+      <if test="mapname != null">
+        mapname = #{mapname,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnail != null">
+        thumbnail = #{thumbnail,jdbcType=VARCHAR},
+      </if>
+      <if test="webpreview != null">
+        webpreview = #{webpreview,jdbcType=VARCHAR},
+      </if>
+      <if test="maptype != null">
+        maptype = #{maptype,jdbcType=VARCHAR},
+      </if>
+      <if test="points != null">
+        points = #{points,jdbcType=INTEGER},
+      </if>
+      <if test="difficulty != null">
+        difficulty = #{difficulty,jdbcType=INTEGER},
+      </if>
+      <if test="mapper != null">
+        mapper = #{mapper,jdbcType=VARCHAR},
+      </if>
+      <if test="maprelease != null">
+        maprelease = #{maprelease,jdbcType=VARCHAR},
+      </if>
+      <if test="width != null">
+        width = #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="goodnum != null">
+        goodnum = #{goodnum,jdbcType=INTEGER},
+      </if>
+      <if test="badnum != null">
+        badnum = #{badnum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.silver.ddrtools.ddr.entity.DdrMapinfo">
+    <!--@mbg.generated-->
+    update ddrmapinfo
+    set mapname = #{mapname,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      thumbnail = #{thumbnail,jdbcType=VARCHAR},
+      webpreview = #{webpreview,jdbcType=VARCHAR},
+      maptype = #{maptype,jdbcType=VARCHAR},
+      points = #{points,jdbcType=INTEGER},
+      difficulty = #{difficulty,jdbcType=INTEGER},
+      mapper = #{mapper,jdbcType=VARCHAR},
+      maprelease = #{maprelease,jdbcType=VARCHAR},
+      width = #{width,jdbcType=INTEGER},
+      height = #{height,jdbcType=INTEGER},
+      goodnum = #{goodnum,jdbcType=INTEGER},
+      badnum = #{badnum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

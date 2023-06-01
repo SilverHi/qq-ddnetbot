@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.silver.ddrtools.common.dao.SysCmdDao">
+  <resultMap id="BaseResultMap" type="com.silver.ddrtools.common.entity.SysCmd">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="cmd_name" jdbcType="VARCHAR" property="cmdName" />
+    <result column="class_name" jdbcType="VARCHAR" property="className" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, cmd_name, class_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_cmd
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_cmd
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.silver.ddrtools.common.entity.SysCmd" useGeneratedKeys="true">
+    insert into sys_cmd (cmd_name, class_name)
+    values (#{cmdName,jdbcType=VARCHAR}, #{className,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.silver.ddrtools.common.entity.SysCmd" useGeneratedKeys="true">
+    insert into sys_cmd
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cmdName != null">
+        cmd_name,
+      </if>
+      <if test="className != null">
+        class_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cmdName != null">
+        #{cmdName,jdbcType=VARCHAR},
+      </if>
+      <if test="className != null">
+        #{className,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.silver.ddrtools.common.entity.SysCmd">
+    update sys_cmd
+    <set>
+      <if test="cmdName != null">
+        cmd_name = #{cmdName,jdbcType=VARCHAR},
+      </if>
+      <if test="className != null">
+        class_name = #{className,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.silver.ddrtools.common.entity.SysCmd">
+    update sys_cmd
+    set cmd_name = #{cmdName,jdbcType=VARCHAR},
+      class_name = #{className,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

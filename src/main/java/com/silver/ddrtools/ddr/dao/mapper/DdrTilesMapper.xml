@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.silver.ddrtools.ddr.dao.DdrTilesMapper">
+  <resultMap id="BaseResultMap" type="com.silver.ddrtools.ddr.entity.DdrTiles">
+    <!--@mbg.generated-->
+    <!--@Table ddr_tiles-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="tiles_name" jdbcType="VARCHAR" property="tilesName" />
+    <result column="map_name" jdbcType="BIGINT" property="mapName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, tiles_name, map_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from ddr_tiles
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from ddr_tiles
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.silver.ddrtools.ddr.entity.DdrTiles" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into ddr_tiles (tiles_name, map_name)
+    values (#{tilesName,jdbcType=VARCHAR}, #{mapName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.silver.ddrtools.ddr.entity.DdrTiles" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into ddr_tiles
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tilesName != null">
+        tiles_name,
+      </if>
+      <if test="mapName != null">
+        map_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tilesName != null">
+        #{tilesName,jdbcType=VARCHAR},
+      </if>
+      <if test="mapName != null">
+        #{mapName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.silver.ddrtools.ddr.entity.DdrTiles">
+    <!--@mbg.generated-->
+    update ddr_tiles
+    <set>
+      <if test="tilesName != null">
+        tiles_name = #{tilesName,jdbcType=VARCHAR},
+      </if>
+      <if test="mapName != null">
+        map_name = #{mapName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.silver.ddrtools.ddr.entity.DdrTiles">
+    <!--@mbg.generated-->
+    update ddr_tiles
+    set tiles_name = #{tilesName,jdbcType=VARCHAR},
+      map_name = #{mapName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

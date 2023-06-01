@@ -1,0 +1,60 @@
+
+server:
+  port: 8088
+spring:
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  datasource:
+    url: jdbc:mysql://124.71.9.179:3306/ddrtools?useUnicode=true&characterEncoding=utf8&useSSL=false&rewriteBatchedStatements=true
+    username: ddrtools
+    password: GcffM2jZGK5mpnR2
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mail:
+    # 配置 SMTP 服务器地址
+    host: smtp.qq.com
+    # 发送者邮箱
+    username: 403896948@qq.com
+    # 配置密码，注意不是真正的密码，而是刚刚申请到的授权码
+    password: frjbxjbmkwlzbidg
+    # 端口号465或587
+    port: 587
+    # 默认的邮件编码为UTF-8
+    default-encoding: UTF-8
+    # 配置SSL 加密工厂
+    properties:
+      mail:
+        smtp:
+          socketFactoryClass: javax.net.ssl.SSLSocketFactory
+        #表示开启 DEBUG 模式，这样，邮件发送过程的日志会在控制台打印出来，方便排查错误
+        debug: true
+mybatis:
+#  config-location: classpath:mybatis.cfg.xml    #  mybatis主配置文件所在路径
+  type-aliases-package: com.silver.ddrtools.*.entity  #  定义所有操作类的别名所在包
+  mapper-locations: #  所有的mapper映射文件
+    - classpath:/com/silver/ddrtools/*/dao/mapper/*.xml
+
+# mybatis-plus相关配置
+mybatis-plus:
+  # xml扫描，多个目录用逗号或者分号分隔（告诉 Mapper 所对应的 XML 文件位置）
+  mapper-locations: classpath:/com/silver/ddrtools/*/dao/mapper/*.xml
+  # 以下配置均有默认值,可以不设置
+  global-config:
+    db-config:
+      #主键类型 AUTO:"数据库ID自增" INPUT:"用户输入ID",ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: auto
+      #字段策略 IGNORED:"忽略判断"  NOT_NULL:"非 NULL 判断")  NOT_EMPTY:"非空判断"
+      field-strategy: NOT_EMPTY
+      #数据库类型
+      db-type: MYSQL
+      sql-injector: com.baomidou.mybatisplus.core.injector.LogicSqlInjector
+  configuration:
+    # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
+    map-underscore-to-camel-case: true
+    # 如果查询结果中包含空值的列，则 MyBatis 在映射的时候，不会映射这个字段
+    call-setters-on-nulls: true
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    wrap-keyword: true
+
